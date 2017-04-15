@@ -7,14 +7,21 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4E2AFCBD1E9F3C7F00F2785F /* AlbumDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E2AFCBC1E9F3C7F00F2785F /* AlbumDetailController.swift */; };
 		4E7738D31E99C40F000D2E86 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E7738D21E99C40F000D2E86 /* AppDelegate.swift */; };
-		4E7738D51E99C40F000D2E86 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E7738D41E99C40F000D2E86 /* ViewController.swift */; };
+		4E7738D51E99C40F000D2E86 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E7738D41E99C40F000D2E86 /* HomeViewController.swift */; };
 		4E7738D81E99C40F000D2E86 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4E7738D61E99C40F000D2E86 /* Main.storyboard */; };
 		4E7738DB1E99C40F000D2E86 /* tinyalbum.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4E7738D91E99C40F000D2E86 /* tinyalbum.xcdatamodeld */; };
 		4E7738DD1E99C40F000D2E86 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4E7738DC1E99C40F000D2E86 /* Assets.xcassets */; };
 		4E7738E01E99C40F000D2E86 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4E7738DE1E99C40F000D2E86 /* LaunchScreen.storyboard */; };
 		4E7738EB1E99C40F000D2E86 /* tinyalbumTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E7738EA1E99C40F000D2E86 /* tinyalbumTests.swift */; };
 		4E7738F61E99C40F000D2E86 /* tinyalbumUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E7738F51E99C40F000D2E86 /* tinyalbumUITests.swift */; };
+		4E7739041E9A13D3000D2E86 /* AlbumCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E7739031E9A13D3000D2E86 /* AlbumCell.swift */; };
+		4E7739061E9AB5D3000D2E86 /* TextViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E7739051E9AB5D3000D2E86 /* TextViewController.swift */; };
+		4E7739081E9B4B17000D2E86 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E7739071E9B4B17000D2E86 /* SettingsViewController.swift */; };
+		5E3EAC7FF70B1788583E446B /* Pods_tinyalbumUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 63880F96F71E445C8C168421 /* Pods_tinyalbumUITests.framework */; };
+		9833004C91C0303F761099EF /* Pods_tinyalbum.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1832CC4370D3E5FD55ED9FD4 /* Pods_tinyalbum.framework */; };
+		EC48759EE701000BE5BD8026 /* Pods_tinyalbumTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BDB7FE9E787D335B82C7B3DA /* Pods_tinyalbumTests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,9 +42,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		06828BC26BC7DB89599B2FF5 /* Pods-tinyalbum.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-tinyalbum.debug.xcconfig"; path = "Pods/Target Support Files/Pods-tinyalbum/Pods-tinyalbum.debug.xcconfig"; sourceTree = "<group>"; };
+		1832CC4370D3E5FD55ED9FD4 /* Pods_tinyalbum.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_tinyalbum.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		4B4DE39C577CBA41C50E5208 /* Pods-tinyalbumTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-tinyalbumTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-tinyalbumTests/Pods-tinyalbumTests.release.xcconfig"; sourceTree = "<group>"; };
+		4E2AFCBC1E9F3C7F00F2785F /* AlbumDetailController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlbumDetailController.swift; sourceTree = "<group>"; };
 		4E7738CF1E99C40F000D2E86 /* tinyalbum.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = tinyalbum.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4E7738D21E99C40F000D2E86 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		4E7738D41E99C40F000D2E86 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		4E7738D41E99C40F000D2E86 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		4E7738D71E99C40F000D2E86 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		4E7738DA1E99C40F000D2E86 /* tinyalbum.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = tinyalbum.xcdatamodel; sourceTree = "<group>"; };
 		4E7738DC1E99C40F000D2E86 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -49,6 +60,15 @@
 		4E7738F11E99C40F000D2E86 /* tinyalbumUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = tinyalbumUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4E7738F51E99C40F000D2E86 /* tinyalbumUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = tinyalbumUITests.swift; sourceTree = "<group>"; };
 		4E7738F71E99C40F000D2E86 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4E7739031E9A13D3000D2E86 /* AlbumCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlbumCell.swift; sourceTree = "<group>"; };
+		4E7739051E9AB5D3000D2E86 /* TextViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextViewController.swift; sourceTree = "<group>"; };
+		4E7739071E9B4B17000D2E86 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		63880F96F71E445C8C168421 /* Pods_tinyalbumUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_tinyalbumUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8D0939E146959F1275D36D23 /* Pods-tinyalbum.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-tinyalbum.release.xcconfig"; path = "Pods/Target Support Files/Pods-tinyalbum/Pods-tinyalbum.release.xcconfig"; sourceTree = "<group>"; };
+		B1EF8CB5A3F6F9BF812AE7FB /* Pods-tinyalbumTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-tinyalbumTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-tinyalbumTests/Pods-tinyalbumTests.debug.xcconfig"; sourceTree = "<group>"; };
+		BDB7FE9E787D335B82C7B3DA /* Pods_tinyalbumTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_tinyalbumTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		CD682EFD2BFEA15222647562 /* Pods-tinyalbumUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-tinyalbumUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-tinyalbumUITests/Pods-tinyalbumUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		CE06B05243A2ACA4AE3BF3B9 /* Pods-tinyalbumUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-tinyalbumUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-tinyalbumUITests/Pods-tinyalbumUITests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +76,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9833004C91C0303F761099EF /* Pods_tinyalbum.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -63,6 +84,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EC48759EE701000BE5BD8026 /* Pods_tinyalbumTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -70,12 +92,23 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5E3EAC7FF70B1788583E446B /* Pods_tinyalbumUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3AF35D5D5563FAE49E31F93D /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				1832CC4370D3E5FD55ED9FD4 /* Pods_tinyalbum.framework */,
+				BDB7FE9E787D335B82C7B3DA /* Pods_tinyalbumTests.framework */,
+				63880F96F71E445C8C168421 /* Pods_tinyalbumUITests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		4E7738C61E99C40F000D2E86 = {
 			isa = PBXGroup;
 			children = (
@@ -83,6 +116,8 @@
 				4E7738E91E99C40F000D2E86 /* tinyalbumTests */,
 				4E7738F41E99C40F000D2E86 /* tinyalbumUITests */,
 				4E7738D01E99C40F000D2E86 /* Products */,
+				891E0AECC3E2106630E7D033 /* Pods */,
+				3AF35D5D5563FAE49E31F93D /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -99,13 +134,17 @@
 		4E7738D11E99C40F000D2E86 /* tinyalbum */ = {
 			isa = PBXGroup;
 			children = (
+				4E7739051E9AB5D3000D2E86 /* TextViewController.swift */,
 				4E7738D21E99C40F000D2E86 /* AppDelegate.swift */,
-				4E7738D41E99C40F000D2E86 /* ViewController.swift */,
+				4E7738D41E99C40F000D2E86 /* HomeViewController.swift */,
 				4E7738D61E99C40F000D2E86 /* Main.storyboard */,
 				4E7738DC1E99C40F000D2E86 /* Assets.xcassets */,
 				4E7738DE1E99C40F000D2E86 /* LaunchScreen.storyboard */,
 				4E7738E11E99C40F000D2E86 /* Info.plist */,
 				4E7738D91E99C40F000D2E86 /* tinyalbum.xcdatamodeld */,
+				4E7739031E9A13D3000D2E86 /* AlbumCell.swift */,
+				4E7739071E9B4B17000D2E86 /* SettingsViewController.swift */,
+				4E2AFCBC1E9F3C7F00F2785F /* AlbumDetailController.swift */,
 			);
 			path = tinyalbum;
 			sourceTree = "<group>";
@@ -128,6 +167,19 @@
 			path = tinyalbumUITests;
 			sourceTree = "<group>";
 		};
+		891E0AECC3E2106630E7D033 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				06828BC26BC7DB89599B2FF5 /* Pods-tinyalbum.debug.xcconfig */,
+				8D0939E146959F1275D36D23 /* Pods-tinyalbum.release.xcconfig */,
+				B1EF8CB5A3F6F9BF812AE7FB /* Pods-tinyalbumTests.debug.xcconfig */,
+				4B4DE39C577CBA41C50E5208 /* Pods-tinyalbumTests.release.xcconfig */,
+				CD682EFD2BFEA15222647562 /* Pods-tinyalbumUITests.debug.xcconfig */,
+				CE06B05243A2ACA4AE3BF3B9 /* Pods-tinyalbumUITests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -135,9 +187,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 4E7738FA1E99C40F000D2E86 /* Build configuration list for PBXNativeTarget "tinyalbum" */;
 			buildPhases = (
+				B4131FD2129B3F36AF9EF479 /* [CP] Check Pods Manifest.lock */,
 				4E7738CB1E99C40F000D2E86 /* Sources */,
 				4E7738CC1E99C40F000D2E86 /* Frameworks */,
 				4E7738CD1E99C40F000D2E86 /* Resources */,
+				FE432648B4BECEB90EF3D362 /* [CP] Embed Pods Frameworks */,
+				09FCC3AA316E8F29BC22972D /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -152,9 +207,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 4E7738FD1E99C40F000D2E86 /* Build configuration list for PBXNativeTarget "tinyalbumTests" */;
 			buildPhases = (
+				CA32B744CD9D880E024D362A /* [CP] Check Pods Manifest.lock */,
 				4E7738E21E99C40F000D2E86 /* Sources */,
 				4E7738E31E99C40F000D2E86 /* Frameworks */,
 				4E7738E41E99C40F000D2E86 /* Resources */,
+				FA00C664B5CF225F5041EF9F /* [CP] Embed Pods Frameworks */,
+				02B913B5B5193B8EEFACB4E8 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -170,9 +228,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 4E7739001E99C40F000D2E86 /* Build configuration list for PBXNativeTarget "tinyalbumUITests" */;
 			buildPhases = (
+				27359E6D3DC85FDF369BCC4D /* [CP] Check Pods Manifest.lock */,
 				4E7738ED1E99C40F000D2E86 /* Sources */,
 				4E7738EE1E99C40F000D2E86 /* Frameworks */,
 				4E7738EF1E99C40F000D2E86 /* Resources */,
+				4B2FF25E677EC3B477A7E70C /* [CP] Embed Pods Frameworks */,
+				787FDF38EB6C53BD24C7490B /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -260,14 +321,156 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		02B913B5B5193B8EEFACB4E8 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-tinyalbumTests/Pods-tinyalbumTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		09FCC3AA316E8F29BC22972D /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-tinyalbum/Pods-tinyalbum-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		27359E6D3DC85FDF369BCC4D /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		4B2FF25E677EC3B477A7E70C /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-tinyalbumUITests/Pods-tinyalbumUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		787FDF38EB6C53BD24C7490B /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-tinyalbumUITests/Pods-tinyalbumUITests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B4131FD2129B3F36AF9EF479 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		CA32B744CD9D880E024D362A /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		FA00C664B5CF225F5041EF9F /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-tinyalbumTests/Pods-tinyalbumTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		FE432648B4BECEB90EF3D362 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-tinyalbum/Pods-tinyalbum-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		4E7738CB1E99C40F000D2E86 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4E7738D51E99C40F000D2E86 /* ViewController.swift in Sources */,
+				4E7739061E9AB5D3000D2E86 /* TextViewController.swift in Sources */,
+				4E7738D51E99C40F000D2E86 /* HomeViewController.swift in Sources */,
 				4E7738D31E99C40F000D2E86 /* AppDelegate.swift in Sources */,
 				4E7738DB1E99C40F000D2E86 /* tinyalbum.xcdatamodeld in Sources */,
+				4E7739041E9A13D3000D2E86 /* AlbumCell.swift in Sources */,
+				4E7739081E9B4B17000D2E86 /* SettingsViewController.swift in Sources */,
+				4E2AFCBD1E9F3C7F00F2785F /* AlbumDetailController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -417,6 +620,7 @@
 		};
 		4E7738FB1E99C40F000D2E86 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 06828BC26BC7DB89599B2FF5 /* Pods-tinyalbum.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 9D59LBT778;
@@ -430,6 +634,7 @@
 		};
 		4E7738FC1E99C40F000D2E86 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8D0939E146959F1275D36D23 /* Pods-tinyalbum.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 9D59LBT778;
@@ -443,6 +648,7 @@
 		};
 		4E7738FE1E99C40F000D2E86 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B1EF8CB5A3F6F9BF812AE7FB /* Pods-tinyalbumTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -458,6 +664,7 @@
 		};
 		4E7738FF1E99C40F000D2E86 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4B4DE39C577CBA41C50E5208 /* Pods-tinyalbumTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -473,6 +680,7 @@
 		};
 		4E7739011E99C40F000D2E86 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = CD682EFD2BFEA15222647562 /* Pods-tinyalbumUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				DEVELOPMENT_TEAM = 9D59LBT778;
@@ -487,6 +695,7 @@
 		};
 		4E7739021E99C40F000D2E86 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = CE06B05243A2ACA4AE3BF3B9 /* Pods-tinyalbumUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				DEVELOPMENT_TEAM = 9D59LBT778;
@@ -518,6 +727,7 @@
 				4E7738FC1E99C40F000D2E86 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		4E7738FD1E99C40F000D2E86 /* Build configuration list for PBXNativeTarget "tinyalbumTests" */ = {
 			isa = XCConfigurationList;
@@ -526,6 +736,7 @@
 				4E7738FF1E99C40F000D2E86 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		4E7739001E99C40F000D2E86 /* Build configuration list for PBXNativeTarget "tinyalbumUITests" */ = {
 			isa = XCConfigurationList;
@@ -534,6 +745,7 @@
 				4E7739021E99C40F000D2E86 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
