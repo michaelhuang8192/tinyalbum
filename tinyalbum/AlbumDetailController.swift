@@ -17,19 +17,79 @@ class AlbumDetailController : PFQueryCollectionViewController {
     
     var album : PFObject!
     
+    static let sBFExecutor = BFExecutor { (block: @escaping () -> Void) in
+        DispatchQueue.main.async(execute: block)
+    }
+    
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        
+        parseClassName = "Photo"
+        pullToRefreshEnabled = true;
+        paginationEnabled = true;
+        objectsPerPage = 25;
+    }
+    
+    override func queryForCollection() -> PFQuery<PFObject> {
+        print(">>>>>search")
+        let query = PFQuery(className: parseClassName!)
+        query.order(byDescending: "createdAt")
+        query.whereKey("album", equalTo: album)
+        return query
+    }
+    
+    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath, object: PFObject?) -> PFCollectionViewCell? {
+
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PhotoCollectionViewCell", for: indexPath) as! PFCollectionViewCell
+        cell.imageView.image = UIImage(named: "placeholder")
+        
+        if let imageFile = object?["thumbnail"] as? PFFile {
+            cell.imageView.file = imageFile
+            cell.imageView.loadInBackground()
+        }
+        
+        return cell
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         buttonCamera.isEnabled = UIImagePickerController.isSourceTypeAvailable(.camera)
         
-        self.title = album["name"] as! String
+        self.title = album["name"] as? String
+        
     }
     
     @IBAction func takePicture(_ sender : Any) {
         pickImageFromSource(.camera)
     }
     
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "PhotoViewController" {
+            let indexPath = self.collectionView?.indexPath(for: sender as! UICollectionViewCell)
+            let controller = (segue.destination as! PhotoViewController)
+            
+            controller.objects = self.objects
+            controller.index = indexPath!.row
+            
+        } else if segue.identifier == "NetworkSourceViewController" {
+            let controller = (segue.destination as! NetworkSourceViewController)
+            controller.album = album
+        }
+        
+        super.prepare(for: segue, sender: sender)
+    }
+    
+}
+
+
+extension AlbumDetailController {
+    override func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout:UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let width = collectionView.bounds.width / 3
+        return CGSize(width: width, height: width)
+    }
 }
 
 extension AlbumDetailController : UIImagePickerControllerDelegate, UINavigationControllerDelegate {
@@ -44,24 +104,34 @@ extension AlbumDetailController : UIImagePickerControllerDelegate, UINavigationC
         if let image = info["UIImagePickerControllerOriginalImage"] as? UIImage {
             
             DispatchQueue.main.async {
-                let thumbnail = self.resizeImage(image: image, size: 200.0)
-                let fullImage = self.resizeImage(image: image, size: 1000.0)
+                let thumbnail = self.resizeImage(image: image, size: 200)
+                let fullImage = self.resizeImage(image: image, size: 800)
                 
-                let thumbnailFile = PFFile(data: UIImagePNGRepresentation(thumbnail)!)
-                let fullImageFile = PFFile(data: UIImagePNGRepresentation(fullImage)!)
+                let thumbnailFile = PFFile(data: UIImageJPEGRepresentation(thumbnail, 0.75)!)!
+                let fullImageFile = PFFile(data: UIImageJPEGRepresentation(fullImage, 0.75)!)!
+                let photo = PFObject(className:"Photo")
+                photo["album"] = self.album
                 
-                thumbnailFile?.saveInBackground().continue({ (result) -> Any? in
-                    return fullImageFile?.saveInBackground()
+                photo.saveEventually().continue(with: AlbumDetailController.sBFExecutor, with: { (result) -> Any? in
+                    self.loadObjects()
                     
-                }).continue({ (result) -> Any? in
-                    print(">>>>ok")
-                    self.album["photo"] = [["thumbnail": thumbnailFile, "fullImage": fullImageFile]]
-                    return self.album.saveInBackground()
+                    var tasks : [BFTask<AnyObject>] = []
+                    tasks.append(thumbnailFile.saveInBackground() as! BFTask<AnyObject>)
+                    tasks.append(fullImageFile.saveInBackground() as! BFTask<AnyObject>)
                     
-                }).continue({ (result) -> Any? in
+                    return BFTask<AnyObject>(forCompletionOfAllTasksWithResults: tasks)
                     
+                }).continue(with: AlbumDetailController.sBFExecutor, with: { (result) -> Any? in
+                    photo["thumbnail"] = thumbnailFile
+                    photo["fullImage"] = fullImageFile
+                    return photo.saveEventually()
+                    
+                }).continue(with: AlbumDetailController.sBFExecutor, with: { (result) -> Any? in
+                    self.loadObjects()
                     return nil
+                    
                 })
+                
             }
             
         }

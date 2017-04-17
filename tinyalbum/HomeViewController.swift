@@ -13,6 +13,8 @@ import Parse
 class HomeViewController: PFQueryTableViewController {
     
     var searchBar: UISearchBar!
+    var currentUser: PFUser!
+    var currentTerm = ""
 
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -24,9 +26,23 @@ class HomeViewController: PFQueryTableViewController {
     }
     
     override func queryForTable() -> PFQuery<PFObject> {
-        print(">>>>>search")
-        let query = PFQuery(className: parseClassName!)
-        query.order(byDescending: "createdAt")
+        var predicate : NSPredicate
+        if PFUser.current() != nil {
+            predicate = NSPredicate(format: "user=%@ or isPublic=true", PFUser.current()!)
+        } else {
+            predicate = NSPredicate(format: "isPublic=true")
+        }
+        
+        let query = PFQuery(className: parseClassName!, predicate: predicate)
+        query.order(by: [
+            NSSortDescriptor(key: "createdAt", ascending: false),
+            NSSortDescriptor(key: "id", ascending: true)
+        ])
+        
+        if !currentTerm.isEmpty {
+            query.whereKey("name", hasPrefix: currentTerm)
+        }
+        
         return query
     }
     
@@ -34,16 +50,25 @@ class HomeViewController: PFQueryTableViewController {
         super.viewDidLoad()
         
         searchBar = UISearchBar()
-        searchBar.placeholder = "Search Any Thing"
+        searchBar.placeholder = "Search something ..."
         searchBar.delegate = self
         
         navigationItem.titleView = searchBar
         
         hideKeyboardWhenTappedAround()
+        
+        currentUser = PFUser.current()
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        
+        if PFUser.current() == nil {
+            clear()
+        } else if PFUser.current() != currentUser {
+            currentUser = PFUser.current()
+            loadObjects()
+        }
         
         checkLogin()
     }
@@ -83,11 +108,9 @@ class HomeViewController: PFQueryTableViewController {
             if let textFields = vc.textFields, let albumName = textFields[0].text, !albumName.isEmpty {
                 let album = PFObject(className:"Album")
                 album["name"] = albumName
-                album["canRead"] = PFUser.current()
-                album["photos"] = []
-                
+                album["user"] = PFUser.current()
+                album["isPublic"] = false
                 album.saveEventually({ (success, error) in
-                    print(">>>>\(album)")
                     self.loadObjects();
                 })
             }
@@ -96,7 +119,7 @@ class HomeViewController: PFQueryTableViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "AlbumDetail" {
+        if segue.identifier == "AlbumDetailController" {
             let album = self.object(at: self.tableView.indexPath(for: (sender as! PFTableViewCell)))
             let controller = (segue.destination as! AlbumDetailController)
             controller.album = album
@@ -139,7 +162,24 @@ extension HomeViewController : PFSignUpViewControllerDelegate {
 extension HomeViewController : UISearchBarDelegate {
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        print(">>>>\(searchText)")
+        NSObject.cancelPreviousPerformRequests(withTarget: self, selector: #selector(self.searchWithTerm), object: nil)
+        perform(#selector(self.searchWithTerm), with: nil, afterDelay: 0.5)
+    }
+    
+    func searchWithTerm() {
+        if let searchBar = self.searchBar, var term = searchBar.text {
+            term = term.trimmingCharacters(in: .whitespacesAndNewlines).lowercased()
+            if term == currentTerm { return }
+            
+            currentTerm = term
+            print("search: \(currentTerm)")
+            loadObjects()
+        }
+    }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        NSObject.cancelPreviousPerformRequests(withTarget: self, selector: #selector(self.searchWithTerm), object: nil)
+        perform(#selector(self.searchWithTerm), with: nil)
     }
     
 }
