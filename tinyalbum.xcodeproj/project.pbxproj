@@ -27,7 +27,7 @@
 		602538E71EAC118F0042A052 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 602538E61EAC118F0042A052 /* Utils.swift */; };
 		606BCB081EB85A7600E0EADA /* ServerMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 606BCB071EB85A7600E0EADA /* ServerMonitor.swift */; };
 		606BCB0C1EBEC8CE00E0EADA /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 606BCB0B1EBEC8CE00E0EADA /* SignInViewController.swift */; };
-		606BCB0E1EBEDDB200E0EADA /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = 606BCB0D1EBEDDB200E0EADA /* README.md */; };
+		606BCB101EBEEE7900E0EADA /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = 606BCB0F1EBEEE7900E0EADA /* README.md */; };
 		9833004C91C0303F761099EF /* Pods_tinyalbum.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1832CC4370D3E5FD55ED9FD4 /* Pods_tinyalbum.framework */; };
 		EC48759EE701000BE5BD8026 /* Pods_tinyalbumTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BDB7FE9E787D335B82C7B3DA /* Pods_tinyalbumTests.framework */; };
 /* End PBXBuildFile section */
@@ -78,7 +78,7 @@
 		602538E61EAC118F0042A052 /* Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		606BCB071EB85A7600E0EADA /* ServerMonitor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServerMonitor.swift; sourceTree = "<group>"; };
 		606BCB0B1EBEC8CE00E0EADA /* SignInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
-		606BCB0D1EBEDDB200E0EADA /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = tinyalbum/README.md; sourceTree = "<group>"; };
+		606BCB0F1EBEEE7900E0EADA /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		63880F96F71E445C8C168421 /* Pods_tinyalbumUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_tinyalbumUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8D0939E146959F1275D36D23 /* Pods-tinyalbum.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-tinyalbum.release.xcconfig"; path = "Pods/Target Support Files/Pods-tinyalbum/Pods-tinyalbum.release.xcconfig"; sourceTree = "<group>"; };
 		B1EF8CB5A3F6F9BF812AE7FB /* Pods-tinyalbumTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-tinyalbumTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-tinyalbumTests/Pods-tinyalbumTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -128,7 +128,7 @@
 		4E7738C61E99C40F000D2E86 = {
 			isa = PBXGroup;
 			children = (
-				606BCB0D1EBEDDB200E0EADA /* README.md */,
+				606BCB0F1EBEEE7900E0EADA /* README.md */,
 				4E7738D11E99C40F000D2E86 /* tinyalbum */,
 				4E7738E91E99C40F000D2E86 /* tinyalbumTests */,
 				4E7738F41E99C40F000D2E86 /* tinyalbumUITests */,
@@ -524,7 +524,7 @@
 				4E7739081E9B4B17000D2E86 /* SettingsViewController.swift in Sources */,
 				602538E31EABB3B20042A052 /* NetworkSourceCollectionCell.swift in Sources */,
 				600781401EA42EA600F2C786 /* GoogleSearchService.swift in Sources */,
-				606BCB0E1EBEDDB200E0EADA /* README.md in Sources */,
+				606BCB101EBEEE7900E0EADA /* README.md in Sources */,
 				4E2AFCBD1E9F3C7F00F2785F /* AlbumDetailController.swift in Sources */,
 				602538E71EAC118F0042A052 /* Utils.swift in Sources */,
 			);
