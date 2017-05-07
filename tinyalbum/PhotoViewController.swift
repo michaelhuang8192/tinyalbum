@@ -19,10 +19,6 @@ class PhotoViewController : UIViewController {
     var index: Int!
     var bfTask: BFTask<AnyObject>!
     
-    static let sBFExecutor = BFExecutor { (block: @escaping () -> Void) in
-        DispatchQueue.main.async(execute: block)
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -71,10 +67,10 @@ class PhotoViewController : UIViewController {
     func onSwipe(_ recognizer : UISwipeGestureRecognizer) {
         if objects.count <= 0 { return }
         
-        if recognizer.direction == .left {
+        if recognizer.direction == .right {
             index = (index - 1 + objects.count) % objects.count
             loadImage()
-        } else if recognizer.direction == .right {
+        } else if recognizer.direction == .left {
             index = (index + 1) % objects.count
             loadImage()
         }

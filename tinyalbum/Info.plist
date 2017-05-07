@@ -40,6 +40,18 @@
 	</array>
 	<key>NSCameraUsageDescription</key>
 	<string>Take Photo</string>
+	<key>NSAppTransportSecurity</key>
+	<dict>
+		<key>NSAllowsArbitraryLoads</key>
+		<true/>
+	</dict>
+	<key>TinyAlbumServer</key>
+	<dict>
+		<key>url</key>
+		<string>http://tinyappsdev.com:50000/parse</string>
+		<key>appId</key>
+		<string>AB1234</string>
+	</dict>
 	<key>UISupportedInterfaceOrientations~ipad</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>

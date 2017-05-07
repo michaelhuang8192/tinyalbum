@@ -13,14 +13,12 @@ import ParseUI
 
 class AlbumDetailController : PFQueryCollectionViewController {
     
+    var emptyLabel: UILabel!
     @IBOutlet weak var buttonCamera : UIBarButtonItem!
+    @IBOutlet weak var buttonDeleteModeSwitch: UIBarButtonItem!
     
     var album : PFObject!
-    
-    static let sBFExecutor = BFExecutor { (block: @escaping () -> Void) in
-        DispatchQueue.main.async(execute: block)
-    }
-    
+    var inDeleteMode = false
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -31,25 +29,30 @@ class AlbumDetailController : PFQueryCollectionViewController {
         objectsPerPage = 25;
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        if UserDefaults.standard.bool(forKey: "refreshAlbumDetailController") {
+            UserDefaults.standard.set(false, forKey: "refreshAlbumDetailController")
+            
+            loadObjects()
+        }
+    }
+    
     override func queryForCollection() -> PFQuery<PFObject> {
-        print(">>>>>search")
         let query = PFQuery(className: parseClassName!)
         query.order(byDescending: "createdAt")
         query.whereKey("album", equalTo: album)
+        query.cachePolicy = PFCachePolicy.cacheThenNetwork
         return query
     }
-    
-    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath, object: PFObject?) -> PFCollectionViewCell? {
 
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PhotoCollectionViewCell", for: indexPath) as! PFCollectionViewCell
-        cell.imageView.image = UIImage(named: "placeholder")
-        
-        if let imageFile = object?["thumbnail"] as? PFFile {
-            cell.imageView.file = imageFile
-            cell.imageView.loadInBackground()
+    override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
+        if identifier == "PhotoViewController" && inDeleteMode {
+            return false
         }
         
-        return cell
+        return super.shouldPerformSegue(withIdentifier: identifier, sender: sender)
     }
     
     override func viewDidLoad() {
@@ -59,12 +62,26 @@ class AlbumDetailController : PFQueryCollectionViewController {
         
         self.title = album["name"] as? String
         
+        emptyLabel = UILabel(frame: CGRect(x: 0, y: 0, width:0, height:0))
+        emptyLabel.textAlignment = .center
+        emptyLabel.textColor = UIColor.black
+        emptyLabel.text = "No Photo Yet"
+        
     }
     
     @IBAction func takePicture(_ sender : Any) {
         pickImageFromSource(.camera)
     }
     
+    @IBAction func switchDeleteMode(_ sender : Any) {
+        if inDeleteMode {
+            inDeleteMode = false
+            buttonDeleteModeSwitch.tintColor = self.view.tintColor
+        } else {
+            inDeleteMode = true
+            buttonDeleteModeSwitch.tintColor = UIColor.red
+        }
+    }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "PhotoViewController" {
@@ -90,6 +107,45 @@ extension AlbumDetailController {
         let width = collectionView.bounds.width / 3
         return CGSize(width: width, height: width)
     }
+    
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        if inDeleteMode {
+            if let photo = object(at: indexPath) {
+                photo.deleteEventually().continue(with: Utils.sMainBFExecutor, with: { (result) -> Any? in
+                    self.loadObjects()
+                })
+            }
+        }
+        
+    }
+    
+    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        let count = super.collectionView(collectionView, numberOfItemsInSection: section)
+        
+        if count <= 0 && !isLoading {
+            emptyLabel.frame.size = collectionView.bounds.size
+            collectionView.backgroundView = emptyLabel
+        } else {
+            collectionView.backgroundView = nil
+        }
+        
+        return count
+    }
+    
+    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath, object: PFObject?) -> PFCollectionViewCell? {
+        
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PhotoCollectionViewCell", for: indexPath) as! PFCollectionViewCell
+        //cell.imageView.contentMode = .scaleAspectFit
+        cell.imageView.image = UIImage(named: "placeholder")
+        
+        if let imageFile = object?["thumbnail"] as? PFFile {
+            cell.imageView.file = imageFile
+            cell.imageView.loadInBackground()
+        }
+        
+        return cell
+    }
 }
 
 extension AlbumDetailController : UIImagePickerControllerDelegate, UINavigationControllerDelegate {
@@ -103,16 +159,16 @@ extension AlbumDetailController : UIImagePickerControllerDelegate, UINavigationC
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         if let image = info["UIImagePickerControllerOriginalImage"] as? UIImage {
             
-            DispatchQueue.main.async {
-                let thumbnail = self.resizeImage(image: image, size: 200)
-                let fullImage = self.resizeImage(image: image, size: 800)
+            DispatchQueue.global().async {
+                let thumbnail = Utils.resizeImage(image: image, size: 200)
+                let fullImage = Utils.resizeImage(image: image, size: 800)
                 
                 let thumbnailFile = PFFile(data: UIImageJPEGRepresentation(thumbnail, 0.75)!)!
                 let fullImageFile = PFFile(data: UIImageJPEGRepresentation(fullImage, 0.75)!)!
                 let photo = PFObject(className:"Photo")
                 photo["album"] = self.album
                 
-                photo.saveEventually().continue(with: AlbumDetailController.sBFExecutor, with: { (result) -> Any? in
+                photo.saveEventually().continue(with: Utils.sMainBFExecutor, with: { (result) -> Any? in
                     self.loadObjects()
                     
                     var tasks : [BFTask<AnyObject>] = []
@@ -121,14 +177,13 @@ extension AlbumDetailController : UIImagePickerControllerDelegate, UINavigationC
                     
                     return BFTask<AnyObject>(forCompletionOfAllTasksWithResults: tasks)
                     
-                }).continue(with: AlbumDetailController.sBFExecutor, with: { (result) -> Any? in
+                }).continue(successBlock: { (result) -> Any? in
                     photo["thumbnail"] = thumbnailFile
                     photo["fullImage"] = fullImageFile
                     return photo.saveEventually()
                     
-                }).continue(with: AlbumDetailController.sBFExecutor, with: { (result) -> Any? in
+                }).continue(with: Utils.sMainBFExecutor, with: { (result) -> Any? in
                     self.loadObjects()
-                    return nil
                     
                 })
                 
@@ -137,24 +192,6 @@ extension AlbumDetailController : UIImagePickerControllerDelegate, UINavigationC
         }
         
         dismiss(animated: true, completion: nil)
-    }
-    
-    func resizeImage(image: UIImage, size: CGFloat) -> UIImage {
-        var newSize: CGSize
-        if(image.size.width > image.size.height) {
-            newSize = CGSize(width: size, height: size / image.size.width * image.size.height)
-        } else {
-            newSize = CGSize(width: size / image.size.height * image.size.width, height: size)
-        }
-        
-        let rect = CGRect(x: 0, y: 0, width: newSize.width, height: newSize.height)
-
-        UIGraphicsBeginImageContextWithOptions(newSize, false, 1.0)
-        image.draw(in: rect)
-        let newImage = UIGraphicsGetImageFromCurrentImageContext()
-        UIGraphicsEndImageContext()
-        
-        return newImage!
     }
     
 }

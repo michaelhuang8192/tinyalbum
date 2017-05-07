@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="12141" systemVersion="16E195" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
-    <entity name="Album" representedClassName="Album" syncable="YES" codeGenerationType="class">
-        <attribute name="local" optional="YES" syncable="YES"/>
-    </entity>
-    <entity name="Photo" representedClassName="Photo" syncable="YES" codeGenerationType="class">
+    <entity name="NetworkPhoto" representedClassName="NetworkPhoto" syncable="YES" codeGenerationType="class">
+        <attribute name="albumId" attributeType="String" indexed="YES" syncable="YES"/>
+        <attribute name="imageFile" optional="YES" attributeType="Binary" allowsExternalBinaryDataStorage="YES" syncable="YES"/>
+        <attribute name="photoId" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="photoUrl" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="thumbnailFile" optional="YES" attributeType="Binary" allowsExternalBinaryDataStorage="YES" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Album" positionX="-63" positionY="-18" width="128" height="60"/>
-        <element name="Photo" positionX="-54" positionY="-9" width="128" height="60"/>
+        <element name="NetworkPhoto" positionX="-54" positionY="-9" width="128" height="120"/>
     </elements>
 </model>

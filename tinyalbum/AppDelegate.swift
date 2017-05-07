@@ -14,16 +14,33 @@ import Parse
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-
+    var isConnectionAlertUp = false
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
+        //setup Parse Server
         Parse.enableLocalDatastore()
+        let serverInfo = Bundle.main.object(forInfoDictionaryKey: "TinyAlbumServer") as! [String:String]
         let config = ParseClientConfiguration {
-            $0.applicationId = "pk"
-            $0.server = "http://192.168.1.109:1337/parse"
+            $0.applicationId = serverInfo["appId"]
+            $0.server = serverInfo["url"]!
         }
         Parse.initialize(with: config)
+        
+        //register network monitor
+        ServerMonitor.shared.register(self) { (isReachable) in
+            
+            if !isReachable, !self.isConnectionAlertUp, let controller = self.window?.rootViewController {
+                self.isConnectionAlertUp = true
+                let alert = UIAlertController(title: "Connection", message: "Can't connect to the server", preferredStyle:.alert)
+                alert.addAction(UIAlertAction(title: "Dismiss", style: .default, handler: { (UIAlertAction) in
+                   self.isConnectionAlertUp = false
+                }))
+                controller.present(alert, animated: true, completion: nil)
+            }
+            
+        }
+        ServerMonitor.shared.start()
         
         return true
     }
@@ -36,10 +53,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationDidEnterBackground(_ application: UIApplication) {
         // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
         // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
+        
+        ServerMonitor.shared.stop()
     }
 
     func applicationWillEnterForeground(_ application: UIApplication) {
         // Called as part of the transition from the background to the active state; here you can undo many of the changes made on entering the background.
+        
+        ServerMonitor.shared.start()
     }
 
     func applicationDidBecomeActive(_ application: UIApplication) {
@@ -47,6 +68,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     func applicationWillTerminate(_ application: UIApplication) {
+        ServerMonitor.shared.unregisterAll()
         self.saveContext()
     }
 
@@ -58,6 +80,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 fatalError("Unresolved error \(error), \(error.userInfo)")
             }
         })
+        container.viewContext.automaticallyMergesChangesFromParent = true
         return container
     }()
 

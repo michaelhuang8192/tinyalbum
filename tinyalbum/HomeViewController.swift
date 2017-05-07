@@ -9,20 +9,26 @@
 import UIKit
 import ParseUI
 import Parse
+import CoreData
 
 class HomeViewController: PFQueryTableViewController {
     
+    var emptyLabel: UILabel!
     var searchBar: UISearchBar!
     var currentUser: PFUser!
     var currentTerm = ""
-
+    var persistentContainer: NSPersistentContainer!
+    var tableViewSepColor: UIColor!
+    
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         
         parseClassName = "Album"
-        pullToRefreshEnabled = true;
-        paginationEnabled = true;
-        objectsPerPage = 25;
+        pullToRefreshEnabled = true
+        paginationEnabled = true
+        objectsPerPage = 25
+        
+        persistentContainer = (UIApplication.shared.delegate as! AppDelegate).persistentContainer
     }
     
     override func queryForTable() -> PFQuery<PFObject> {
@@ -40,14 +46,22 @@ class HomeViewController: PFQueryTableViewController {
         ])
         
         if !currentTerm.isEmpty {
-            query.whereKey("name", hasPrefix: currentTerm)
+            query.whereKey("name", contains: currentTerm)
         }
+        
+        query.cachePolicy = PFCachePolicy.cacheThenNetwork
         
         return query
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        emptyLabel = UILabel(frame: CGRect(x: 0, y: 0, width:0, height:0))
+        emptyLabel.textAlignment = .center
+        emptyLabel.textColor = UIColor.black
+        emptyLabel.text = "No Album Yet"
+        tableViewSepColor = tableView.separatorColor
         
         searchBar = UISearchBar()
         searchBar.placeholder = "Search something ..."
@@ -90,14 +104,27 @@ class HomeViewController: PFQueryTableViewController {
     func checkLogin() {
         if PFUser.current() == nil {
             DispatchQueue.main.async {
-                let loginViewController = PFLogInViewController()
-                loginViewController.delegate = self
-                loginViewController.signUpController!.delegate = self
-                self.present(loginViewController, animated: true, completion: nil)
+                let signInViewController = SignInViewController()
+                self.present(signInViewController, animated: true, completion: nil)
             }
         }
     }
-    
+
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        let num = super.tableView(tableView, numberOfRowsInSection: section)
+        
+        if !isLoading && (objects == nil || objects?.count == 0) {
+            tableView.separatorColor = UIColor.clear
+            tableView.backgroundView = emptyLabel
+        } else {
+            tableView.separatorColor = tableViewSepColor
+            tableView.backgroundView = nil
+        }
+
+        
+        return num
+    }
+
     @IBAction func addAlbum(_ sender: Any) {
         let vc = UIAlertController(title: "New Album", message: "Enter a new album name:", preferredStyle: .alert)
         vc.addTextField(configurationHandler: { textField -> Void in
@@ -138,6 +165,30 @@ extension HomeViewController {
         return cell
     }
     
+    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete, let album = object(at: indexPath) {
+            removeObject(at: indexPath)
+            deleteAlbumPhotos(album: album)
+        }
+    }
+    
+    //delete network photos from local storage
+    func deleteAlbumPhotos(album: PFObject) {
+        let objectId = album.objectId
+        self.persistentContainer.performBackgroundTask({ (context) in
+            let fetchRequest: NSFetchRequest<NSFetchRequestResult> = NetworkPhoto.fetchRequest()
+            fetchRequest.predicate = NSPredicate(format: "albumId = %@", argumentArray: [objectId!])
+            let batchDeleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
+            batchDeleteRequest.resultType = .resultTypeCount
+            
+            let _ = (try? context.execute(batchDeleteRequest)) as? NSBatchDeleteResult
+        })
+    }
+    
 }
 
 extension HomeViewController : UISearchResultsUpdating {
@@ -146,19 +197,7 @@ extension HomeViewController : UISearchResultsUpdating {
     }
 }
 
-extension HomeViewController : PFLogInViewControllerDelegate {
-    func log(_ logInController: PFLogInViewController, didLogIn user: PFUser) {
-        logInController.dismiss(animated: true, completion: nil)
-    }
-}
-
-extension HomeViewController : PFSignUpViewControllerDelegate {
-    func signUpViewController(_ signUpController: PFSignUpViewController, didSignUp user: PFUser) {
-        signUpController.dismiss(animated: true, completion: nil)
-    }
-}
-
-
+//handle search
 extension HomeViewController : UISearchBarDelegate {
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
@@ -172,7 +211,6 @@ extension HomeViewController : UISearchBarDelegate {
             if term == currentTerm { return }
             
             currentTerm = term
-            print("search: \(currentTerm)")
             loadObjects()
         }
     }

@@ -16,12 +16,18 @@
 		4E7738E01E99C40F000D2E86 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4E7738DE1E99C40F000D2E86 /* LaunchScreen.storyboard */; };
 		4E7738EB1E99C40F000D2E86 /* tinyalbumTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E7738EA1E99C40F000D2E86 /* tinyalbumTests.swift */; };
 		4E7738F61E99C40F000D2E86 /* tinyalbumUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E7738F51E99C40F000D2E86 /* tinyalbumUITests.swift */; };
-		4E7739061E9AB5D3000D2E86 /* TextViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E7739051E9AB5D3000D2E86 /* TextViewController.swift */; };
 		4E7739081E9B4B17000D2E86 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E7739071E9B4B17000D2E86 /* SettingsViewController.swift */; };
 		5E3EAC7FF70B1788583E446B /* Pods_tinyalbumUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 63880F96F71E445C8C168421 /* Pods_tinyalbumUITests.framework */; };
 		6007813B1EA329E300F2C786 /* PhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6007813A1EA329E300F2C786 /* PhotoViewController.swift */; };
 		6007813D1EA42AB100F2C786 /* NetworkSourceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6007813C1EA42AB100F2C786 /* NetworkSourceViewController.swift */; };
 		600781401EA42EA600F2C786 /* GoogleSearchService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6007813F1EA42EA600F2C786 /* GoogleSearchService.swift */; };
+		602538E11EAB21E80042A052 /* CoreDataCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 602538E01EAB21E80042A052 /* CoreDataCollectionViewController.swift */; };
+		602538E31EABB3B20042A052 /* NetworkSourceCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 602538E21EABB3B20042A052 /* NetworkSourceCollectionCell.swift */; };
+		602538E51EABBB530042A052 /* PhotoDownloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 602538E41EABBB530042A052 /* PhotoDownloader.swift */; };
+		602538E71EAC118F0042A052 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 602538E61EAC118F0042A052 /* Utils.swift */; };
+		606BCB081EB85A7600E0EADA /* ServerMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 606BCB071EB85A7600E0EADA /* ServerMonitor.swift */; };
+		606BCB0C1EBEC8CE00E0EADA /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 606BCB0B1EBEC8CE00E0EADA /* SignInViewController.swift */; };
+		606BCB0E1EBEDDB200E0EADA /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = 606BCB0D1EBEDDB200E0EADA /* README.md */; };
 		9833004C91C0303F761099EF /* Pods_tinyalbum.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1832CC4370D3E5FD55ED9FD4 /* Pods_tinyalbum.framework */; };
 		EC48759EE701000BE5BD8026 /* Pods_tinyalbumTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BDB7FE9E787D335B82C7B3DA /* Pods_tinyalbumTests.framework */; };
 /* End PBXBuildFile section */
@@ -62,11 +68,17 @@
 		4E7738F11E99C40F000D2E86 /* tinyalbumUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = tinyalbumUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4E7738F51E99C40F000D2E86 /* tinyalbumUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = tinyalbumUITests.swift; sourceTree = "<group>"; };
 		4E7738F71E99C40F000D2E86 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		4E7739051E9AB5D3000D2E86 /* TextViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextViewController.swift; sourceTree = "<group>"; };
 		4E7739071E9B4B17000D2E86 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		6007813A1EA329E300F2C786 /* PhotoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoViewController.swift; sourceTree = "<group>"; };
 		6007813C1EA42AB100F2C786 /* NetworkSourceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkSourceViewController.swift; sourceTree = "<group>"; };
 		6007813F1EA42EA600F2C786 /* GoogleSearchService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoogleSearchService.swift; sourceTree = "<group>"; };
+		602538E01EAB21E80042A052 /* CoreDataCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataCollectionViewController.swift; sourceTree = "<group>"; };
+		602538E21EABB3B20042A052 /* NetworkSourceCollectionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkSourceCollectionCell.swift; sourceTree = "<group>"; };
+		602538E41EABBB530042A052 /* PhotoDownloader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoDownloader.swift; sourceTree = "<group>"; };
+		602538E61EAC118F0042A052 /* Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
+		606BCB071EB85A7600E0EADA /* ServerMonitor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServerMonitor.swift; sourceTree = "<group>"; };
+		606BCB0B1EBEC8CE00E0EADA /* SignInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
+		606BCB0D1EBEDDB200E0EADA /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		63880F96F71E445C8C168421 /* Pods_tinyalbumUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_tinyalbumUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8D0939E146959F1275D36D23 /* Pods-tinyalbum.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-tinyalbum.release.xcconfig"; path = "Pods/Target Support Files/Pods-tinyalbum/Pods-tinyalbum.release.xcconfig"; sourceTree = "<group>"; };
 		B1EF8CB5A3F6F9BF812AE7FB /* Pods-tinyalbumTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-tinyalbumTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-tinyalbumTests/Pods-tinyalbumTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -138,15 +150,16 @@
 		4E7738D11E99C40F000D2E86 /* tinyalbum */ = {
 			isa = PBXGroup;
 			children = (
+				602538E91EAD9B550042A052 /* Util */,
+				602538E81EAD9B2E0042A052 /* Service */,
 				6007813E1EA42C9200F2C786 /* UIViewController */,
-				4E7739051E9AB5D3000D2E86 /* TextViewController.swift */,
 				4E7738D21E99C40F000D2E86 /* AppDelegate.swift */,
 				4E7738D61E99C40F000D2E86 /* Main.storyboard */,
 				4E7738DC1E99C40F000D2E86 /* Assets.xcassets */,
 				4E7738DE1E99C40F000D2E86 /* LaunchScreen.storyboard */,
 				4E7738E11E99C40F000D2E86 /* Info.plist */,
 				4E7738D91E99C40F000D2E86 /* tinyalbum.xcdatamodeld */,
-				6007813F1EA42EA600F2C786 /* GoogleSearchService.swift */,
+				606BCB0D1EBEDDB200E0EADA /* README.md */,
 			);
 			path = tinyalbum;
 			sourceTree = "<group>";
@@ -172,13 +185,34 @@
 		6007813E1EA42C9200F2C786 /* UIViewController */ = {
 			isa = PBXGroup;
 			children = (
+				602538E01EAB21E80042A052 /* CoreDataCollectionViewController.swift */,
 				6007813C1EA42AB100F2C786 /* NetworkSourceViewController.swift */,
 				6007813A1EA329E300F2C786 /* PhotoViewController.swift */,
 				4E2AFCBC1E9F3C7F00F2785F /* AlbumDetailController.swift */,
 				4E7739071E9B4B17000D2E86 /* SettingsViewController.swift */,
 				4E7738D41E99C40F000D2E86 /* HomeViewController.swift */,
+				602538E21EABB3B20042A052 /* NetworkSourceCollectionCell.swift */,
+				606BCB0B1EBEC8CE00E0EADA /* SignInViewController.swift */,
 			);
 			name = UIViewController;
+			sourceTree = "<group>";
+		};
+		602538E81EAD9B2E0042A052 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				6007813F1EA42EA600F2C786 /* GoogleSearchService.swift */,
+				602538E41EABBB530042A052 /* PhotoDownloader.swift */,
+			);
+			name = Service;
+			sourceTree = "<group>";
+		};
+		602538E91EAD9B550042A052 /* Util */ = {
+			isa = PBXGroup;
+			children = (
+				602538E61EAC118F0042A052 /* Utils.swift */,
+				606BCB071EB85A7600E0EADA /* ServerMonitor.swift */,
+			);
+			name = Util;
 			sourceTree = "<group>";
 		};
 		891E0AECC3E2106630E7D033 /* Pods */ = {
@@ -478,15 +512,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4E7739061E9AB5D3000D2E86 /* TextViewController.swift in Sources */,
+				606BCB0C1EBEC8CE00E0EADA /* SignInViewController.swift in Sources */,
+				602538E51EABBB530042A052 /* PhotoDownloader.swift in Sources */,
 				4E7738D51E99C40F000D2E86 /* HomeViewController.swift in Sources */,
 				6007813D1EA42AB100F2C786 /* NetworkSourceViewController.swift in Sources */,
+				606BCB081EB85A7600E0EADA /* ServerMonitor.swift in Sources */,
 				4E7738D31E99C40F000D2E86 /* AppDelegate.swift in Sources */,
 				4E7738DB1E99C40F000D2E86 /* tinyalbum.xcdatamodeld in Sources */,
+				602538E11EAB21E80042A052 /* CoreDataCollectionViewController.swift in Sources */,
 				6007813B1EA329E300F2C786 /* PhotoViewController.swift in Sources */,
 				4E7739081E9B4B17000D2E86 /* SettingsViewController.swift in Sources */,
+				602538E31EABB3B20042A052 /* NetworkSourceCollectionCell.swift in Sources */,
 				600781401EA42EA600F2C786 /* GoogleSearchService.swift in Sources */,
+				606BCB0E1EBEDDB200E0EADA /* README.md in Sources */,
 				4E2AFCBD1E9F3C7F00F2785F /* AlbumDetailController.swift in Sources */,
+				602538E71EAC118F0042A052 /* Utils.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

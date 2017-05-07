@@ -80,7 +80,7 @@ class GoogleSearchService : NSObject {
         let request = newRequest(query: [
             "q": term,
             "searchType": "image",
-            "fileType": "jpg"
+            "fileType": "jpg",
         ])
         
         return execRequest(request: request)
