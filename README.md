@@ -9,7 +9,7 @@ This is a small application that helps people to store their photos with searcha
 ## Usage
 *You need to create an account*
 
-###### Q: *How to create an album?*
+Q: *How to create an album?* 
 A: click on the ADD icon and enter any name you want, then click on button - create.
 
 Q: *How to add photos into album?*
