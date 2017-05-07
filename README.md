@@ -9,16 +9,16 @@ This is a small application that helps people to store their photos with searcha
 ## Usage
 *You need to create an account*
 
-Q: *How to create an album?* 
+Q: *How to create an album?*  
 A: click on the ADD icon and enter any name you want, then click on button - create.
 
-Q: *How to add photos into album?*
+Q: *How to add photos into album?*  
 A: Option #1, You can click on the CAMERA icon to take a photo, and the photo will save into the album automatically. Option #2, You can click on the G icon to download the photos from Google Image, then you can tap on a picture for saving it into the album.
 
-Q: *How to delete photos in an album?*
+Q: *How to delete photos in an album?*  
 A: Click on the RECYCLE-BIN icon to enter the removal mode, then tap on any unwanted picture; Finally click on the RECYCLE-BIN icon again to quit the removal mode.
 
-Q: *How to delete an ablum*
+Q: *How to delete an ablum*  
 A: Swipe the album name to left, then click on button - delete.
 
 ## Build
